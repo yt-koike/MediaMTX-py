@@ -1,0 +1,23 @@
+[project]
+name = "mediamtx_yt-koike"
+version = "0.0.1"
+authors = [
+  { name="yt-koike", email="y.koike.2001code@gmail.com" },
+]
+description = "Unofficial Python bind of MediaMTX"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: Microsoft :: Windows :: Windows 11",
+    "Operating System :: POSIX :: Linux",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+
+[project.urls]
+Repository = "https://github.com/yt-koike/MediaMTX-py"
+
+[build-system]
+requires = ["setuptools>=40.8.0"]
+build-backend = "setuptools.build_meta"
