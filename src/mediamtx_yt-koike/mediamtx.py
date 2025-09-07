@@ -62,7 +62,7 @@ class MediaMTX(Singleton):
         with open("mediamtx/mediamtx.yml", "w", encoding="utf-8") as f:
             yaml.safe_dump(self.yaml, f)
 
-
-mtx = MediaMTX()
-mtx.start()
-mtx.stop()
+if __name__ == "__main__":
+    mtx = MediaMTX()
+    mtx.start()
+    mtx.stop()
