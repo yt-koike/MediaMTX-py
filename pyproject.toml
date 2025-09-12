@@ -4,7 +4,7 @@ version = "0.0.1"
 authors = [
   { name="yt-koike", email="y.koike.2001code@gmail.com" },
 ]
-description = "Unofficial Python bind of MediaMTX"
+description = "Unofficial Python wrapper of MediaMTX"
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [

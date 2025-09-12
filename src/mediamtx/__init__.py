@@ -1,4 +1,8 @@
-import urllib.request, platform, tarfile, yaml, subprocess
+import urllib.request
+import platform
+import tarfile
+import yaml
+import subprocess
 import os
 import zipfile
 
@@ -22,7 +26,9 @@ class MediaMTX(Singleton):
         if self.system not in MEDIAMTX_URLS:
             raise Exception("Unsupported OS")
         url = MEDIAMTX_URLS[self.system]
-        os.makedirs("mediamtx/", exist_ok=True)
+        if os.path.exists("mediamtx/"):
+            return
+        os.makedirs("mediamtx/")
         if url.endswith(".tar.gz"):
             urllib.request.urlretrieve(url, "mediamtx.tar.gz")
             with tarfile.open("mediamtx.tar.gz", mode="r:gz") as tar:
@@ -49,20 +55,15 @@ class MediaMTX(Singleton):
     def stop(self):
         self.proc.kill()
 
-    def getYaml(self):
+    def get_yaml(self):
         with open("mediamtx/mediamtx.yml", "r", encoding="utf-8") as f:
             return yaml.safe_load(f)
 
-    def setYaml(self, data):
+    def set_yaml(self, data):
         with open("mediamtx/mediamtx.yml", "w", encoding="utf-8") as f:
             return yaml.safe_dump(data, f)
 
-    def addPath(self, name, url):
+    def add_path(self, name, url):
         self.yaml["paths"][name] = {"source": url}
         with open("mediamtx/mediamtx.yml", "w", encoding="utf-8") as f:
             yaml.safe_dump(self.yaml, f)
-
-if __name__ == "__main__":
-    mtx = MediaMTX()
-    mtx.start()
-    mtx.stop()
