@@ -10,7 +10,7 @@ After installation, you can use MediaMTX like as follows.
 
 ```
 from mediamtx import MediaMTX
-mtx = MediaMTX()
+mtx = MediaMTX() # In __init__(), the MediaMTX binary will be downloaded
 yaml = mtx.get_yaml() # Get mediamtx.yml
 yaml["paths"][name] = {"source": url}
 mtx.set_yaml(yaml) # Set mediamtx.yml
