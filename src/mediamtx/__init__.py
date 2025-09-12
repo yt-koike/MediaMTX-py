@@ -5,7 +5,9 @@ import yaml
 import subprocess
 import os
 import zipfile
+import logging
 
+logger = logging.getLogger(__name__)
 
 MEDIAMTX_URLS = {
     "Linux": "https://github.com/bluenviron/mediamtx/releases/download/v1.14.0/mediamtx_v1.14.0_linux_amd64.tar.gz",
@@ -26,8 +28,13 @@ class MediaMTX(Singleton):
         if self.system not in MEDIAMTX_URLS:
             raise Exception("Unsupported OS")
         url = MEDIAMTX_URLS[self.system]
-        if os.path.exists("mediamtx/"):
+        if self.system == "Linux" and os.path.exists("mediamtx/mediamtx"):
             return
+        if self.system == "Windows" and os.path.exists("mediamtx/mediamtx.exe"):
+            return
+
+        # Download binary
+        logger.info("Downloading MediaMTX...")
         os.makedirs("mediamtx/")
         if url.endswith(".tar.gz"):
             urllib.request.urlretrieve(url, "mediamtx.tar.gz")
@@ -39,19 +46,25 @@ class MediaMTX(Singleton):
             with zipfile.ZipFile("mediamtx.zip", "r") as zip_ref:
                 zip_ref.extractall("mediamtx/")
             os.remove("mediamtx.zip")
+        logger.info("Download Complete")
+
         with open("mediamtx/mediamtx.yml", encoding="utf-8") as f:
             self.yaml = yaml.safe_load(f)
 
     def start(self):
+        logger.info("Starting MediaMTX...")
         if self.system == "Linux":
             self.proc = subprocess.Popen(["mediamtx/mediamtx", "mediamtx/mediamtx.yml"])
         elif self.system == "Windows":
             self.proc = subprocess.Popen(
                 ["mediamtx/mediamtx.exe", "mediamtx/mediamtx.yml"]
             )
+        logger.info("Process Started")
 
     def stop(self):
+        logger.info("Stopping MediaMTX...")
         self.proc.kill()
+        logger.info("Stopped MediaMTX")
 
     def get_yaml(self):
         with open("mediamtx/mediamtx.yml", "r", encoding="utf-8") as f:
