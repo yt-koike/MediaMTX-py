@@ -4,7 +4,7 @@ This is an unofficial Python wrapper for [MediaMTX](https://mediamtx.org/)
 
 # How to use
 
-Execute `pip install git+https://github.com/yt-koike/MediaMTX-py` to install this package.
+Execute `pip install git+https://github.com/yt-koike/MediaMTX-py`(Recommended) or `pip install mediamtx-py` to install this package.
 
 After installation, you can use MediaMTX like as follows.
 
