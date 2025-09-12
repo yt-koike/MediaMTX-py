@@ -44,12 +44,10 @@ class MediaMTX(Singleton):
 
     def start(self):
         if self.system == "Linux":
-            self.proc = subprocess.Popen(
-                ["mediamtx/mediamtx", "/mediamtx/mediamtx.yml"]
-            )
+            self.proc = subprocess.Popen(["mediamtx/mediamtx", "mediamtx/mediamtx.yml"])
         elif self.system == "Windows":
             self.proc = subprocess.Popen(
-                ["mediamtx/mediamtx.exe", "/mediamtx/mediamtx.yml"]
+                ["mediamtx/mediamtx.exe", "mediamtx/mediamtx.yml"]
             )
 
     def stop(self):
