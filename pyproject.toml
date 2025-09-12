@@ -14,10 +14,13 @@ classifiers = [
 ]
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
+dependencies = [
+        "PyYAML==6.0.2"
+    ]
 
 [project.urls]
 Repository = "https://github.com/yt-koike/MediaMTX-py"
 
 [build-system]
-requires = ["setuptools>=40.8.0","PyYAML==6.0.2"]
+requires = ["setuptools>=40.8.0"]
 build-backend = "setuptools.build_meta"
