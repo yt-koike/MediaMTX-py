@@ -1,5 +1,5 @@
 [project]
-name = "mediamtx_yt-koike"
+name = "mediamtx-py"
 version = "0.0.1"
 authors = [
   { name="yt-koike", email="y.koike.2001code@gmail.com" },
