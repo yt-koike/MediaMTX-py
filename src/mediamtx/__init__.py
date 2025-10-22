@@ -55,7 +55,7 @@ class MediaMTX(Singleton):
 
         # Download binary
         logger.info("Downloading MediaMTX...")
-        os.makedirs("mediamtx/")
+        os.makedirs("mediamtx/", exist_ok=True)
         url = (
             f"{MEDIAMTX_URL}download/{version}/mediamtx_{version}_{platform}_{arch}"
             + (".zip" if platform == "windows" else ".tar.gz")
