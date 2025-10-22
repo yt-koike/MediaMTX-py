@@ -1,6 +1,6 @@
 [project]
 name = "mediamtx-py"
-version = "0.0.3"
+version = "0.0.4"
 authors = [
   { name="yt-koike", email="y.koike.2001code@gmail.com" },
 ]
