@@ -15,7 +15,8 @@ classifiers = [
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
 dependencies = [
-        "PyYAML==6.0.2"
+        "PyYAML==6.0.2",
+        "requests==2.32.5"
     ]
 
 [project.urls]

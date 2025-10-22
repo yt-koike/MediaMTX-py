@@ -58,7 +58,7 @@ class MediaMTX(Singleton):
         os.makedirs("mediamtx/")
         url = (
             f"{MEDIAMTX_URL}download/{version}/mediamtx_{version}_{platform}_{arch}"
-            + (".zip" if platform == "windows" else ".tar,gz")
+            + (".zip" if platform == "windows" else ".tar.gz")
         )
         try:
             tmp = urllib.request.urlopen(url)
